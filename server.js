@@ -22,10 +22,17 @@ var express = require('express'),
     app = express(),
     path = require('path');
 
-app.get('/', function(req, res){
-    "use strict";
-    res.sendFile(path.join(__dirname + '/index.html'));
-});
+app.use('/',express.static(__dirname + '/public'));
+
+var adminRoutes = require('./routes/adminRoutes')(app, express),
+    basicRoutes = require('./routes/basicRoutes')(app, express),
+    apiRoutes = require('./routes/apiRoutes')(app, express);
+
+
+
+app.use('/', basicRoutes);
+app.use('/admin', adminRoutes);
+app.use('/api', apiRoutes);
 
 app.listen(3000);
 console.log('Visit me at http://localhost:3000');
