@@ -8,3 +8,16 @@ exports.showRequest = function(req, res, next){
 
     next();
 };
+
+exports.nameValidation = function(req, res, next, name){
+    "use strict";
+    /*
+    * DOING VALIDATIONS
+    * */
+
+    console.log('doing some validations on ' + name);
+
+    req.name = name;
+
+    next();
+};

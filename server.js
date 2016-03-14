@@ -20,7 +20,10 @@ console.log('Visit me at http://localhost:3000');
 
 var express = require('express'),
     app = express(),
-    path = require('path');
+    path = require('path'),
+    mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/demo');
 
 app.use('/',express.static(__dirname + '/public'));
 

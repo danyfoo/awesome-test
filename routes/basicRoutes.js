@@ -15,5 +15,15 @@ module.exports = function(app, express){
         res.sendFile('/public/pokemon.html');
     });
 
+    basicRouter.route('/login')
+        .get(function(req, res){
+            res.send('This is The login Form');
+        })
+
+        .post(function(req, res){
+            console.log('Processing');
+            res.send('Processing the login Form!');
+        });
+
     return basicRouter;
 };

@@ -5,7 +5,7 @@
 var usersCtrl = require('../controllers/users');
 
 //Importing Middlewares
-//var adminMiddlewares = require('../middlewares/adminMiddleware');
+var adminMiddlewares = require('../middlewares/adminMiddleware');
 
 module.exports = function(app, express){
     "use strict";
@@ -24,6 +24,7 @@ module.exports = function(app, express){
         "use strict";
         res.send('I show all the users!');
     });
+    adminRouter.param('name', adminMiddlewares.nameValidation); //This function we can validate, parse or change the parameters
     adminRouter.route('/users/:name')
         .get(usersCtrl.showByName);
 
